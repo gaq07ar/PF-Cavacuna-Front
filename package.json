@@ -61,7 +61,7 @@
     "tslint": "~5.19.0",
     "typescript": "~3.5.3"
   },
-  "heroku-postbuild": "ng build --prod",
+  "postinstall": "ng build --aot -prod",
   "engines": {
     "node": "11.10.0",
     "npm": "6.13.2"
