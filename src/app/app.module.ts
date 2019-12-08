@@ -33,7 +33,7 @@ import { DevicesComponent } from './components/admin/devices/devices.component';
     DevicesComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
