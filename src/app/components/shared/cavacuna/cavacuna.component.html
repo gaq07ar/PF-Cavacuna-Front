@@ -1,0 +1,137 @@
+<div class="card text-center" [ngClass]="{
+    'text-white bg-primary': checkColdDangerValidation(actualTemperature),
+    'text-white bg-warning': checkWarningValidation(actualTemperature),
+    'text-white bg-danger': checkHotDangerValidation(actualTemperature)
+  }">
+  <div class="card-header text-info" id="heading{{ i }}">
+    <h2 class="mb-0 text-info card-text">
+      <button class="btn card-text" [ngClass]="{
+          'text-white':
+            checkColdDangerValidation(actualTemperature) ||
+            checkHotDangerValidation(actualTemperature) ||
+            checkWarningValidation(actualTemperature)
+        }" type="button" data-toggle="collapse" attr.data-target="#collapse{{ i }}" aria-expanded="false"
+        attr.aria-controls="collapse{{ i }}">
+        <strong>{{ device.description }}</strong>
+      </button>
+
+      <button class="btn btn-link float-right" type="button" data-toggle="collapse" attr.data-target="#collapseX{{ i }}"
+        aria-expanded="false" attr.aria-controls="collapseX{{ i }}">
+        <img class="settings-icon" src="../../../../assets/img/settings-gears.svg" alt="gear" [ngClass]="{
+            invert:
+              checkColdDangerValidation(actualTemperature) ||
+              checkWarningValidation(actualTemperature) ||
+              checkHotDangerValidation(actualTemperature)
+          }" />
+      </button>
+    </h2>
+  </div>
+
+  <div id="collapse{{ i }}" class="collapse" attr.aria-labelledby="heading{{ i }}" data-parent="#accordionExample">
+    <div class="card-body">
+      <table class="table" [ngClass]="{
+          'bg-primary': checkColdDangerValidation(actualTemperature),
+          'bg-warning': checkWarningValidation(actualTemperature),
+          'bg-danger': checkHotDangerValidation(actualTemperature)
+        }">
+        <thead>
+          <tr class="" [ngClass]="{
+              'text-white':
+                checkColdDangerValidation(actualTemperature) ||
+                checkWarningValidation(actualTemperature) ||
+                checkHotDangerValidation(actualTemperature)
+            }">
+            <th scope="col">#Slot</th>
+            <th scope="col" style="width:10%">Id</th>
+            <th scope="col">Vacuna</th>
+            <!-- <th scope="col">Aplicada</th> -->
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let slot of slots" class="" [ngClass]="{
+              'text-white':
+                checkColdDangerValidation(actualTemperature) ||
+                checkWarningValidation(actualTemperature) ||
+                checkHotDangerValidation(actualTemperature)
+            }">
+            <th scope="row">{{ slot.slotNumber }}</th>
+            <td>
+              <input class="form-control" type="text" name="idUser" id="" [value]="slot.vaccineId" />
+            </td>
+            <td>
+              <div class="form-group">
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option [ngValue]="null" [disabled]="true" [hidden]="true">Seleccionar vacuna</option>
+                  <option *ngFor="let vacuna of vacunas; let i = index; trackBy:trackByIdx">{{ vacuna }}</option>
+                </select>
+              </div>
+            </td>
+            <!-- <td>{{slot.vaccineDescription}}</td> -->
+
+            <!-- <td>
+              <div class="form-group form-check"> -->
+            <!-- Bindear con {{slot.isApplied}} -->
+            <!-- <input type="checkbox" class="form-check-input" id="exampleCheck1" /> -->
+            <!-- Evaluar la posibilidad de hacer un metodo que se llame onClick() que mande un request al server -->
+            <!-- </div>
+            </td> -->
+
+            <td>
+              <div class="btn-toolbar button-group" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                  <button type="button" class="btn btn-primary" title='Aplicar'>
+                    <i class="fas fa-check-square"></i>
+                  </button>
+                </div>
+                <div class="btn-group mr-2" role="group" aria-label="Second group">
+                  <button type="button" class="btn btn-success" title='Guardar estado actual'>
+                    <i class="far fa-save "></i>
+                  </button>
+                </div>
+                <div class="btn-group" role="group" aria-label="Third group">
+                  <button type="button" class="btn btn-danger" title='Eliminar' (click)="setValueToSlot()">
+                    <i class="far fa-trash-alt "></i>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+      <p *ngIf="!isFetching" id="p-temp-{{ i }}" class="card-text">
+        <!-- <span id="badge-{{i}}" class="badge" [ngClass]="{ 'badge-danger': actualTemperature > 18,
+        'badge-primary': actualTemperature < 10 }">{{actualTemperature}}</span> -->
+        <span id="badge-{{ i }}" class="badge" [ngClass]="{
+            'text-white':
+              checkColdDangerValidation(actualTemperature) ||
+              checkHotDangerValidation(actualTemperature) ||
+              checkWarningValidation(actualTemperature)
+          }">{{ actualTemperature }}</span>
+      </p>
+      <div *ngIf="isFetching" class="spinner-border spinner-border-sm" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="collapseX{{ i }}" class="collapse" attr.aria-labelledby="headingX{{ i }}" data-parent="#accordionExample">
+    <div class="card-body">
+      <div class="container">
+        <div class="custom-control custom-checkbox mb-3">
+          <input type="checkbox" class="custom-control-input" id="customCheck" name="fotosensible" />
+          <label class="custom-control-label" for="customCheck">Fotosensible</label>
+        </div>
+        <div class="form-group">
+          <label for="comment">Descripción:</label>
+          <textarea class="form-control" rows="3" id="comment"></textarea>
+        </div>
+        <div class="float-right pb-2">
+          <button class="btn btn-info" type="submit">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
