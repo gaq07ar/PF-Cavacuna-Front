@@ -8,7 +8,7 @@ import { UserService } from "src/app/services/user.service";
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit {
-  isAdmin: boolean;
+  isAdmin = false;
   isFetching = false;
 
   constructor(public auth: AuthService, private userService: UserService) {}
@@ -16,7 +16,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.isFetching = true;
     this.auth.handleAuthCallback();
-    this.getPermissionInformation().then();
+    this.getPermissionInformation().then(result => {
+      console.log("Ejecuto obtener permisos de usuario");
+      console.log(this.isAdmin);
+    });
   }
 
   private async getPermissionInformation() {

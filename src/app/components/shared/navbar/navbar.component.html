@@ -26,7 +26,7 @@
         <li *ngIf="auth.loggedIn" class="nav-item" routerLinkActive="active">
           <h5><a class="nav-link text-black-50" routerLink="reportes">Reportes</a></h5>
         </li>
-        <li *ngIf="auth.loggedIn && isAdmin && !isFetching" class="nav-item" routerLinkActive="active">
+        <li *ngIf="!isFetching && auth.loggedIn && isAdmin" class="nav-item" routerLinkActive="active">
           <h5><a class="nav-link text-black-50" routerLink="admin">Admin</a></h5>
         </li>
         <ul *ngIf="auth.loggedIn" class="navbar-nav ml-auto nav-flex-icons">
