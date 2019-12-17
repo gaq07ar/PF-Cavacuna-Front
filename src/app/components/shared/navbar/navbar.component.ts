@@ -16,15 +16,23 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.isFetching = true;
     this.auth.handleAuthCallback();
-    this.getPermissionInformation().then(result => {
-      console.log("Ejecuto obtener permisos de usuario");
-      console.log(this.isAdmin);
+    this.auth.getUser$().subscribe(userInfo => {
+      this.userService.isAdmin(userInfo.email).subscribe(isAdmin => {
+        this.isAdmin = isAdmin;
+        this.isFetching = false;
+        console.log("Adentro");
+        console.log(this.isAdmin);
+      });
     });
+    // this.getPermissionInformation().then(result => {
+    //   console.log("Ejecuto obtener permisos de usuario");
+    //   console.log(this.isAdmin);
+    // });
   }
 
-  private async getPermissionInformation() {
-    const userInfo = await this.userService.getUserInformation();
-    this.isAdmin = await this.userService.isAdmin(userInfo.email).toPromise();
-    this.isFetching = false;
-  }
+  // private async getPermissionInformation() {
+  //   const userInfo = await this.userService.getUserInformation();
+  //   this.isAdmin = await this.userService.isAdmin(userInfo.email).toPromise();
+  //   this.isFetching = false;
+  // }
 }
