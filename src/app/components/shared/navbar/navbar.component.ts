@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.isFetching = true;
     this.auth.handleAuthCallback();
-    this.getPermissionInformation();
+    this.getPermissionInformation().then();
   }
 
   private async getPermissionInformation() {

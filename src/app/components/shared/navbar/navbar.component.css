@@ -1,9 +1,9 @@
-.profile-icon{
+.profile-icon {
     width: 30px;
     height: auto;
 }
 
-.cavacuna-logo{
+.cavacuna-logo {
     width: 200px;
     height: auto;
     margin: auto;
@@ -11,6 +11,18 @@
     display: block; */
 }
 
-.pointer{
+.pointer {
+    cursor: pointer;
+}
+
+
+button {
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: #069;
     cursor: pointer;
 }
