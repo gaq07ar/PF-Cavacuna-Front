@@ -1,0 +1,41 @@
+.card {
+  border-bottom: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-radius: 0;
+}
+
+.card .card-header {
+  margin-bottom: -1px;
+}
+
+.settings-icon {
+  width: 30px;
+  height: auto;
+}
+
+.custom-control.custom-checkbox {
+  padding-left: 0;
+}
+
+.invert {
+  filter: invert(100%);
+}
+
+label.custom-control-label {
+  position: relative;
+  padding-right: 1.5rem;
+}
+
+.btn-toolbar {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+label.custom-control-label::before,
+label.custom-control-label::after {
+  right: 0;
+  left: auto;
+}

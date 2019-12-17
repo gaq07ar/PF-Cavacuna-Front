@@ -1,0 +1,33 @@
+<div class="row border-bottom">
+    <h2 class="ml-3">Heladeras registradas</h2>
+</div>
+<div class="row container mt-3">
+    <div class="container">
+        <div class="row mt-2">
+            <div class="col-12">
+                <table datatable class="table table-light table-hover" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Heladera</th>
+                            <th scope="col">Cantidad de slots</th>
+                            <th scope="col">Temperatura mínima</th>
+                            <th scope="col">Temperatura máxima</th>
+                            <th scope="col">Fecha de creación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let device of devices">
+                            <td>{{ device.id }}</td>
+                            <td>{{ device.description }}</td>
+                            <td>{{ device.slots_amount }}</td>
+                            <td>{{ device.min_temp }}°C</td>
+                            <td>{{ device.max_temp }}°C</td>
+                            <td>{{ device.created_at | date: "medium" }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
