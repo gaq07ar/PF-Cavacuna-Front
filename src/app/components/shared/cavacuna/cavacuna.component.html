@@ -122,7 +122,7 @@
               checkColdDangerValidation(actualTemperature) ||
               checkHotDangerValidation(actualTemperature) ||
               checkWarningValidation(actualTemperature)
-          }">{{ actualTemperature }}</span>
+          }">{{ actualTemperature }} °C</span>
       </p>
       <div *ngIf="isFetching" class="spinner-border spinner-border-sm" role="status">
         <span class="sr-only">Loading...</span>

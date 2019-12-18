@@ -104,7 +104,7 @@ export class CavacunaComponent implements OnInit {
         // Only for demo purposes
         // Production code goes like:
         // this.actualTemperature = lastEntry;
-        this.actualTemperature = 15;
+        this.actualTemperature = lastEntry;
         this.isFetching = false;
       });
   }
